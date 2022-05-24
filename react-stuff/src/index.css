@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app {
+  display: flex;
+  justify-content: space-around;
+}
+
+.counter {
+  background-color: rebeccapurple;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.counter h2 {
+  margin: 0;
+}
