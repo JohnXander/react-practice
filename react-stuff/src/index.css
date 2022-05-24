@@ -25,3 +25,8 @@ body {
 .counter h2 {
   margin: 0;
 }
+
+.randomAPI {
+  width: 500px;
+  padding: 1rem;
+}
