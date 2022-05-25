@@ -26,7 +26,9 @@ body {
   margin: 0;
 }
 
-.randomAPI {
-  width: 500px;
-  padding: 1rem;
+.randomAPI img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 75px;
+  height: 75px;
 }

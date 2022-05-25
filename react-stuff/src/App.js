@@ -5,20 +5,27 @@ const fetchRandomData = () => {
   return axios.get('https://randomuser.me/api')
   .then(({data}) => {
     console.log(data);
-    return JSON.stringify(data);
+    return data;
   })
   .catch(err => {
     console.error(err);
   })
 }
 
+const getFullUserName = (userInfo: UserInfo) => {
+  const { name: { first, last } } = userInfo;
+  return `${first} ${last}`;
+}
+
 const App = () => {
   const [counter, setCounter] = useState(0);
+  const [userInfos, setUserInfos] = useState([]);
   const [randomUserDataJSON, setRandomUserDataJSON] = useState("");
 
   useEffect(() => {
     fetchRandomData().then(randomData => {
-      setRandomUserDataJSON(randomData || "No user data found.");
+      setRandomUserDataJSON(JSON.stringify(randomData, null, 2) || "No user data found.");
+      setUserInfos(randomData.results);
     })
   }, [])
 
@@ -30,7 +37,14 @@ const App = () => {
         <button onClick={() => {
           setCounter(counter + 1)
         }}>Increase Counter</button>
-        <p className="randomAPI">{randomUserDataJSON}</p>
+        {
+          userInfos.map((userInfo: UserName, idx) => (
+            <div className="randomAPI" key={idx}>
+              <h3>{getFullUserName(userInfo)}</h3>
+              <img src={userInfo.picture.thumbnail} alt="User Picture" />
+            </div>
+          ))
+        }
       </div>
     </div>
   );
